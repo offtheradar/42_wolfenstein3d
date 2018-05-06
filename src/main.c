@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 20:41:02 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/05 21:02:01 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/05 22:07:24 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int		main()
 	while (x < WIN_WIDTH)
 	{
 		compute_ray_pos_and_dir(&info, x);
+		info.map.x = (int)info.pos.x;
+		info.map.y = (int)info.pos.y;
 
-	}
 }
