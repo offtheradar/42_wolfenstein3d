@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/05 18:47:08 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/05 21:00:51 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/06 15:38:54 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ typedef struct	s_wolf
 	t_2d_pixel	ray_dir;
 	t_2d_pixel	map;
 	t_2d_pixel	side_dist;
+	t_2d_pixel	delta;
 	t_2d_pixel	step;
+	int			**world;
 	void		*mlx_ptr;
 	void		*mlx_win;
 	double		curr_time;
