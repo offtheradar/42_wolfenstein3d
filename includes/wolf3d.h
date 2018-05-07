@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/05 18:47:08 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/06 19:57:15 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/06 21:40:49 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,33 @@
 # include "libgfx/libgfx.h"
 # include "libft/libft.h"
 # include "minilibx/mlx.h"
+# define UP 126
+# define DOWN 125
+# define RIGHT 124
+# define LEFT 123
+# define SPEED 0.5
+# define ROT 0.1
 
-typedef struct	s_wolf
+typedef struct		s_wolf
 {
-	t_2d_pixel	pos;
-	t_2d_pixel	dir;
-	t_2d_pixel	plane;
-	t_2d_pixel	camera;
-	t_2d_pixel	ray_dir;
+	t_2d_pixel		pos;
+	t_2d_pixel		dir;
+	t_2d_pixel		plane;
+	t_2d_pixel		camera;
+	t_2d_pixel		ray_dir;
 	t_2d_pixel_i	map;
 	t_2d_pixel_i	side_dist;
-	t_2d_pixel	delta;
+	t_2d_pixel		delta;
 	t_2d_pixel_i	step;
-	int			width;
-	int			height;
-	int			colour;
-	int			**world;
-	void		*mlx_ptr;
-	void		*mlx_win;
-	double		curr_time;
-	double		prev_time;
-}				t_wolf;
+	int				width;
+	int				height;
+	int				colour;
+	int				**world;
+	void			*mlx_ptr;
+	void			*mlx_win;
+	double			curr_time;
+	double			prev_time;
+}					t_wolf;
 
 /*
 ******************************** Initialize Wolf Info **************************
@@ -59,6 +65,9 @@ int				compute_wall_dist_line_height(t_wolf *info, int side);
 void			draw_vert_line(int x, int start, int end, t_wolf *info);
 
 void			draw_wall(t_wolf *info, int x);
+
+void			ray_cast(t_wolf *info);
+
 /*
 ******************************** Load File *************************************
 */

@@ -6,7 +6,7 @@
 #    By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/05 18:58:39 by ysibous           #+#    #+#              #
-#    Updated: 2018/05/06 19:24:54 by ysibous          ###   ########.fr        #
+#    Updated: 2018/05/06 20:34:08 by ysibous          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,5 +38,5 @@ mlibgfx.a:
 mlibx.a: 
 		make -C includes -C minilibx re
 
-$(NAME): mlibft.a mlibgfx.a mlibx.a
+$(NAME):
 	$(CC) $(CFLAGS) $(NAME) $(SRC) $(LIBFT) $(LIBGFX) $(LIBX) $(MLIBX) $(FRAMEW)
