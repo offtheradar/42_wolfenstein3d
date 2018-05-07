@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 20:40:57 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/06 19:08:47 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/06 19:22:13 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	convert_lst_to_arr_helper(t_wolf *info, char **buff, int y)
 	z = 0;
 	while (++x < info->width && buff[x])
 	{
-		z = ft_atoi(buff[x]);
+		z = (int)ft_atoi(buff[x]);
 		info->world[y][x] = z;
 	}
 }

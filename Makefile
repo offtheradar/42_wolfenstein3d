@@ -6,13 +6,13 @@
 #    By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/05 18:58:39 by ysibous           #+#    #+#              #
-#    Updated: 2018/05/06 19:07:30 by ysibous          ###   ########.fr        #
+#    Updated: 2018/05/06 19:24:54 by ysibous          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wold3d
 
-CC = gcc
+CC = clang -g
 CFLAGS = -Wall -Wextra -Werror -o
 FRAMEW = -framework OpenGL -framework Appkit
 
@@ -39,4 +39,4 @@ mlibx.a:
 		make -C includes -C minilibx re
 
 $(NAME): mlibft.a mlibgfx.a mlibx.a
-	$(CC) $(CFLAGS) $(NAME) $(SRC) $(LIBFT) $(LIBGFX) $(LIBX) $(MLIBX) $(FRAMEW) -fsanitize=address
+	$(CC) $(CFLAGS) $(NAME) $(SRC) $(LIBFT) $(LIBGFX) $(LIBX) $(MLIBX) $(FRAMEW)

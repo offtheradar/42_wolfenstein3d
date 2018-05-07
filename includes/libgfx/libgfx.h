@@ -6,14 +6,14 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 15:36:44 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/06 19:04:17 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/06 19:57:31 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBGFX_H
 # define LIBGFX_H
-# define WIN_WIDTH 2000
-# define WIN_HEIGHT 1500
+# define WIN_WIDTH 1000
+# define WIN_HEIGHT 1000
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 # include <stdlib.h>
@@ -25,6 +25,12 @@ typedef struct		s_2d_pixel
 	double				x;
 	double				y;
 }					t_2d_pixel;
+
+typedef struct		s_2d_pixel_i
+{
+	int					x;
+	int					y;
+}					t_2d_pixel_i;
 
 typedef struct		s_3d_pixel
 {

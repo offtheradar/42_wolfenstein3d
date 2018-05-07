@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/05 18:47:08 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/06 19:09:13 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/06 19:57:15 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ typedef struct	s_wolf
 	t_2d_pixel	plane;
 	t_2d_pixel	camera;
 	t_2d_pixel	ray_dir;
-	t_2d_pixel	map;
-	t_2d_pixel	side_dist;
+	t_2d_pixel_i	map;
+	t_2d_pixel_i	side_dist;
 	t_2d_pixel	delta;
-	t_2d_pixel	step;
+	t_2d_pixel_i	step;
 	int			width;
 	int			height;
 	int			colour;
