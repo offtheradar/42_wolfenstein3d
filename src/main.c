@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 20:41:02 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/06 16:04:47 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/06 18:21:57 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,17 @@ void	init_wolf_info(t_wolf *info)
 	info->step.x = 0;
 	info->step.y = 0;
 	info->mlx_ptr = mlx_init();
+	info->world = (int **)ft_memalloc(sizeof(int *) * 24);
+	int i = 0;
+	while (i < 23)
+	{
+		info->world[i] = ft_memalloc(sizeof(int) * 24);
+		i++;
+	}
 	info->mlx_win = mlx_new_window(info->mlx_ptr, 1000, 1000, "WOLF3D");
 }
 
-void	computer_ray_pos_and_dir(t_wolf *info, int x)
+void	compute_ray_pos_and_dir(t_wolf *info, int x)
 {
 	info->camera.x = (double)(2.0 * x / (double)(WIN_WIDTH) - 1.0);
 	info->ray_dir.x = (double)(info->dir.x + info->plane.x * info->camera.x);
@@ -45,8 +52,8 @@ void	compute_positioning(t_wolf *info)
 {
 	info->map.x = (int)info->pos.x;
 	info->map.y = (int)info->pos.y;
-	info->delta.x = abs(1.0 / info->ray_dir.x);
-	info->delta.y = abs(1.0 / info->ray_dir.y);
+	info->delta.x = fabs(1.0 / info->ray_dir.x);
+	info->delta.y = fabs(1.0 / info->ray_dir.y);
 }
 
 void	init_compute_side_dist(t_wolf *info)
@@ -114,31 +121,55 @@ int		compute_wall_dist_line_height(t_wolf *info, int side)
 	return ((int)(WIN_HEIGHT / wall_dist));
 }
 
+void	draw_vert_line(int x, int start, int end, t_wolf *info)
+{
+	while (start != end)
+	{
+		mlx_pixel_put(info->mlx_ptr, info->mlx_win, x, start, info->colour);
+		start += 1;
+	}
+}
+
+int		set_colour(t_wolf *info)
+{
+	if (info->world[(int)info->map.y][(int)info->map.x] == 1)
+		return (0xFF0000);
+	if (info->world[(int)info->map.y][(int)info->map.x] == 2)
+		return (0x00FF00);
+	if (info->world[(int)info->map.y][(int)info->map.x] == 3)
+		return (0x0000FF);
+	if (info->world[(int)info->map.y][(int)info->map.x] == 4)
+		return (0xFFFFFFF);
+	if (info->world[(int)info->map.y][(int)info->map.x] == 5)
+		return (0xFFFF00);
+}
+
 void	draw_wall(t_wolf *info, int x)
 {
 	int		start;
 	int		end;
 	int		side;
+	int		colour;
 	int		line_height;
 
 	side = d_d_a(info);
 	line_height = compute_wall_dist_line_height(info, side);
 	start = -line_height / 2 + WIN_HEIGHT / 2 > 0 ?
-				-line_height / 2 + WIN_HEIGHT / 2 : 0;
+				(int)(-line_height / 2 + WIN_HEIGHT / 2) : 0;
 	end = line_height / 2 + WIN_HEIGHT / 2 < WIN_HEIGHT ?
-				line_height / 2 + WIN_HEIGHT / 2 : WIN_HEIGHT;
-	
+				(int)(line_height / 2 + WIN_HEIGHT / 2) : WIN_HEIGHT;
+	info->colour = set_colour(info);
+	if (side == 1)
+		info->colour /= 2;
+	draw_line_2d(x, start, end, info);
 }
 
 int		main(void)
 {
 	int		x;
-	int		hit;
-	int		side;
 	t_wolf	info;
 
 	x = 0;
-	hit = 0;
 	init_wolf_info(&info);
 	mlx_loop(info.mlx_ptr);
 	while (x < WIN_WIDTH)
@@ -147,5 +178,6 @@ int		main(void)
 		compute_positioning(&info);
 		init_compute_side_dist(&info);
 		draw_wall(&info, x);
+		x++;
 	}
 }
