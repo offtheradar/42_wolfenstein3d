@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libgfx.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 15:36:44 by ysibous           #+#    #+#             */
-/*   Updated: 2018/03/23 17:47:08 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/06 19:04:17 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,11 +164,4 @@ void				construct_wf(t_info *info);
 
 void				draw_wf(t_info *info);
 
-int					open_file(char *file_name);
-
-t_list				*load_file(t_plot *plt, int fd);
-
-void				convert_lst_to_arr(t_plot *plt, t_list *lst);
-
-void				create_vertices(t_plot *plt, char *filename);
 #endif

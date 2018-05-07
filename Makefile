@@ -6,7 +6,7 @@
 #    By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/05 18:58:39 by ysibous           #+#    #+#              #
-#    Updated: 2018/05/05 19:00:07 by ysibous          ###   ########.fr        #
+#    Updated: 2018/05/06 19:07:30 by ysibous          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -o
 FRAMEW = -framework OpenGL -framework Appkit
 
 FILES = main.c
+FILES += load_file.c
 
 SRC = $(addprefix src/, $(FILES))
 

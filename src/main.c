@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 20:41:02 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/06 18:21:57 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/06 19:06:39 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,9 @@ void	init_wolf_info(t_wolf *info)
 	info->map.x = 0;
 	info->step.x = 0;
 	info->step.y = 0;
+	info->width = 0;
+	info->height = 0;
 	info->mlx_ptr = mlx_init();
-	info->world = (int **)ft_memalloc(sizeof(int *) * 24);
-	int i = 0;
-	while (i < 23)
-	{
-		info->world[i] = ft_memalloc(sizeof(int) * 24);
-		i++;
-	}
 	info->mlx_win = mlx_new_window(info->mlx_ptr, 1000, 1000, "WOLF3D");
 }
 
@@ -140,8 +135,7 @@ int		set_colour(t_wolf *info)
 		return (0x0000FF);
 	if (info->world[(int)info->map.y][(int)info->map.x] == 4)
 		return (0xFFFFFFF);
-	if (info->world[(int)info->map.y][(int)info->map.x] == 5)
-		return (0xFFFF00);
+	return (0xFFFF00);
 }
 
 void	draw_wall(t_wolf *info, int x)
@@ -149,7 +143,6 @@ void	draw_wall(t_wolf *info, int x)
 	int		start;
 	int		end;
 	int		side;
-	int		colour;
 	int		line_height;
 
 	side = d_d_a(info);
@@ -161,16 +154,18 @@ void	draw_wall(t_wolf *info, int x)
 	info->colour = set_colour(info);
 	if (side == 1)
 		info->colour /= 2;
-	draw_line_2d(x, start, end, info);
+	draw_vert_line(x, start, end, info);
 }
 
-int		main(void)
+int		main(int ac, char **av)
 {
 	int		x;
 	t_wolf	info;
 
+	ac = 1;
 	x = 0;
 	init_wolf_info(&info);
+	create_world(&info, av[1]);
 	mlx_loop(info.mlx_ptr);
 	while (x < WIN_WIDTH)
 	{
@@ -180,4 +175,5 @@ int		main(void)
 		draw_wall(&info, x);
 		x++;
 	}
+	return (0);
 }
