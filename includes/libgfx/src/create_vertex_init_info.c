@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 15:17:39 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 20:32:21 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/07 18:47:47 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,36 +43,6 @@ t_vertex	*create_vertex(double x, double y, double z)
 	vertex->aligned = create_3d_pix(0, 0, 0);
 	vertex->projected = create_3d_pix(0, 0, 0);
 	return (vertex);
-}
-
-int			*init_colours(t_info *info)
-{
-	int		*colours;
-	int		i;
-	float	f;
-	int		rgb[3];
-
-	info->num_colours = 100;
-	colours = (int *)ft_memalloc(sizeof(int) * info->num_colours);
-	f = 0;
-	i = 0;
-	while (i < info->num_colours)
-	{
-		rgb[0] = (cos(f) + info->r) * 127;
-		rgb[1] = (sin(f) + info->g) * 127;
-		rgb[2] = (-cos(f) + info->b) * 127;
-		colours[i] = ((int)rgb[2]) << 16 | ((int)rgb[1]) << 8 | rgb[0];
-		f += M_PI / info->num_colours;
-		i++;
-	}
-	return (colours);
-}
-
-void		init_rgb(t_info *info)
-{
-	info->r = 255;
-	info->g = 192;
-	info->b = 203;
 }
 
 t_info		*init_info(void)

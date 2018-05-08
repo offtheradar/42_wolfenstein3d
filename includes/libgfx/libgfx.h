@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 15:36:44 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/06 19:57:31 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/07 19:13:23 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,5 +169,7 @@ t_info				*init_info(void);
 void				construct_wf(t_info *info);
 
 void				draw_wf(t_info *info);
+
+void				init_rgb(t_info *info);
 
 #endif
